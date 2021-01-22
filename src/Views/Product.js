@@ -22,18 +22,32 @@ const  Product = () => {
     },[])
 
     const obtenerDatos = async () => {
+        setEquipo({
+            loading: true,
+            data: []
+        });
+
         if (id)
             url = `${url}?id=${id}`
+
         const response = await fetch(url);
-        const jsonresponse = await response.json();
-        setEquipo({
-            loading: false,
-            data: jsonresponse
-        });
-        console.log(jsonresponse);
+        try
+        {
+            const jsonresponse = await response.json();
+            setEquipo({
+                loading: false,
+                data: jsonresponse
+            });
+        }
+        catch(error) {
+            console.log(`error: ${error}`);
+        }
     }
 
-    if (apidata){
+    if (apidata.loading)
+        content = <p>loading ...</p>
+
+    if (!apidata.loading){
         content = 
         <div>
             <h1>Product</h1>
