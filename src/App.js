@@ -16,6 +16,10 @@ function App() {
       <Router>
         <Header/>
         <Switch>
+          <Route exact path="/product/:id">
+            product with parameter
+            <Product/>
+          </Route>
           <Route exact path="/">
             <Home/>
           </Route>

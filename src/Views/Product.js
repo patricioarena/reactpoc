@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 const  Product = () => {
 
@@ -11,8 +11,10 @@ const  Product = () => {
     let content = null
 
     const { id } = useParams()
-    //const url = `http://localhost:3001/comments?id=${id}`
-    const url = `http://localhost:3001/comments`
+    console.log('params: ' + id)
+
+    //let url = `http://localhost:3001/comments?id=${id}`
+    let url = `http://localhost:3001/comments`
 
     React.useEffect(() => {
         //console.log('use efect')
@@ -20,7 +22,8 @@ const  Product = () => {
     },[])
 
     const obtenerDatos = async () => {
-        console.log('id:' + id)
+        if (id)
+            url = `${url}?id=${id}`
         const response = await fetch(url);
         const jsonresponse = await response.json();
         setEquipo({
@@ -38,7 +41,9 @@ const  Product = () => {
                 {
                     apidata.data.map(
                         item => (
-                            <li key={item.id}>{item.id} - {item.body}</li>
+                            <li key={item.id}>
+                                <Link to={`/product/${item.id}`}>{item.id} - {item.body}</Link>
+                            </li>
                         )
                     )
                 }
