@@ -1,7 +1,6 @@
 import React from 'react'
 import HelloWorld from '../Components/HelloWorldHook'
-function Home()
-{
+function Home() {
     return(
         <div>
             <h1>home page</h1>

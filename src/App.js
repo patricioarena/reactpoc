@@ -6,6 +6,7 @@ import Footer from './Components/Footer';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from './Views/Home';
 import About from './Views/About'
+import Product from './Views/Product'
 
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home/>
+          </Route>
+          <Route exact path="/product">
+            <Product/>
           </Route>
           <Route path="/about">
             <About/>
