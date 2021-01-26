@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 
-const  Product = () => {
+const Product = () => {
 
     const [apidata, setEquipo] = React.useState({
         loading: false,
@@ -49,20 +49,21 @@ const  Product = () => {
 
     if (!apidata.loading){
         content = 
-        <div>
-            <h1>Product</h1>
-            <ul>
-                {
-                    apidata.data.map(
-                        item => (
-                            <li key={item.id}>
-                                <Link to={`/product/${item.id}`}>{item.id} - {item.body}</Link>
-                            </li>
+            <div>
+                <h1>Product</h1>
+                <ul>
+                    {
+                        apidata.data.map(
+                            item => (
+                                <li key={item.id}>
+                                    <Link to={`/product/${item.id}`}>{item.id} - {item.body}</Link>
+                                </li>
+                            )
                         )
-                    )
-                }
-            </ul>
-        </div>    }
+                    }
+                </ul>
+            </div>
+    }
     return(
         <div>{content}</div>
     )
