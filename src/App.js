@@ -17,14 +17,13 @@ function App() {
     <div>
 
       <Router>
-        {/*<Nav/>*/}
-        <Aside/>
-
+        <Nav/>
+        {/*<Aside/>*/}
         {/* Content Wrapper. Contains page content */}
         <div className="content-wrapper">
           <Header/>
           <div className="content">
-            <div className="container-fluid">
+            <div className="container">
               <Switch>
                 <Route exact path="/product/:id">
                   product with parameter
