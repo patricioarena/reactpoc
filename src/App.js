@@ -6,6 +6,10 @@ import Aside from './Components/Aside'
 import Nav from './Components/Nav'
 import Footer from './Components/Footer';
 
+import Signup from './Components/Signup';
+import { Container } from "react-bootstrap";
+import { AuthProvider } from '../src/Contexts/AuthContext';
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from './Views/Home';
 import About from './Views/About'
@@ -15,34 +19,44 @@ import Product from './Views/Product'
 function App() {
   return (
     <div>
-
       <Router>
-        <Nav/>
+        <Nav />
         {/*<Aside/>*/}
         {/* Content Wrapper. Contains page content */}
         <div className="content-wrapper">
-          <Header/>
+          <Header />
           <div className="content">
             <div className="container">
-              <Switch>
-                <Route exact path="/product/:id">
-                  product with parameter
-                  <Product/>
-                </Route>
-                <Route exact path="/">
-                  <Home/>
-                </Route>
-                <Route exact path="/product">
-                  <Product/>
-                </Route>
-                <Route path="/about">
-                  <About/>
-                </Route>
-              </Switch>
+              <AuthProvider>
+
+                <Switch>
+                  <Route exact path="/product/:id">
+                    product with parameter
+                  <Product />
+                  </Route>
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
+                  <Route exact path="/product">
+                    <Product />
+                  </Route>
+                  <Route path="/about">
+                    <About />
+                  </Route>
+                  <Route path="/signup">
+                    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }} >
+                      <div className="w-100" style={{ maxWidth: "400px" }}>
+                        <Signup />
+                      </div>
+                    </Container>
+                  </Route>
+                </Switch>
+              </AuthProvider>
+
             </div>
           </div>
         </div>
-        <Footer/>
+        <Footer />
       </Router>
     </div>
   );
