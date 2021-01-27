@@ -7,6 +7,8 @@ import Nav from './Components/Nav'
 import Footer from './Components/Footer';
 
 import Signup from './Components/Signup';
+import Login from './Components/Login'
+import Forgot from './Components/Forgot'
 import { Container } from "react-bootstrap";
 import { AuthProvider } from '../src/Contexts/AuthContext';
 
@@ -27,8 +29,8 @@ function App() {
           <Header />
           <div className="content">
             <div className="container">
-              <AuthProvider>
 
+              <AuthProvider>
                 <Switch>
                   <Route exact path="/product/:id">
                     product with parameter
@@ -43,13 +45,9 @@ function App() {
                   <Route path="/about">
                     <About />
                   </Route>
-                  <Route path="/signup">
-                    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }} >
-                      <div className="w-100" style={{ maxWidth: "400px" }}>
-                        <Signup />
-                      </div>
-                    </Container>
-                  </Route>
+                  <Route path="/signup" component={Signup} />
+                  <Route path="/login" component={Login} />
+                  <Route path="/forgot" component={Forgot} />
                 </Switch>
               </AuthProvider>
 

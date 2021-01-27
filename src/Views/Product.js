@@ -48,7 +48,7 @@ const Product = () => {
         content = <p>loading ...</p>
 
     if (!apidata.loading){
-        content = 
+        content =
             <div>
                 <h1>Product</h1>
                 <ul>

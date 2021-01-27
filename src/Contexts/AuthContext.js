@@ -12,9 +12,8 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState()
 
     function signup(email, password) {
-        // return auth.createUserWithEmailAndPassword(email, password)
         return auth.createUserWithEmailAndPassword(email, password)
-            .then(function (response) {
+            .then(function () {
                 return true;
             })
             .catch(function (error) {
@@ -22,8 +21,32 @@ export function AuthProvider({ children }) {
             });
     }
 
+    function sendEmailVerification() {
+        return auth.currentUser.sendEmailVerification()
+            .then(function () {
+                // Email sent && signout currentUser
+                return auth.signOut()
+                    .then(function () {
+                        // Sign-out successful.
+                        return true;
+                    })
+            })
+    }
+
     function login(email, password) {
         return auth.signInWithEmailAndPassword(email, password)
+            .then(function () {
+                if (currentUser.emailVerified) {
+                    return true;
+                }
+                auth.signOut().then(function () {
+                    // Sign-out successful.
+                    return false;
+                })
+            })
+            .catch(function (error) {
+                return false;
+            });
     }
 
     function logout() {
@@ -32,6 +55,12 @@ export function AuthProvider({ children }) {
 
     function resetPassword(email) {
         return auth.sendPasswordResetEmail(email)
+            .then(function () {
+                return true;
+            })
+            .catch(function (error) {
+                return false;
+            });
     }
 
     function updateEmail(email) {
@@ -58,7 +87,8 @@ export function AuthProvider({ children }) {
         logout,
         resetPassword,
         updateEmail,
-        updatePassword
+        updatePassword,
+        sendEmailVerification
     }
 
     return (
