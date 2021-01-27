@@ -1,5 +1,6 @@
 import React from 'react'
-import Navigation from './Navigation'
+import { Link } from "react-router-dom";
+
 const Header = () => {
     return (
 <div className="content-header">
@@ -10,9 +11,9 @@ const Header = () => {
       </div>{/* /.col */}
       <div className="col-sm-6">
         <ol className="breadcrumb float-sm-right">
-          <li className="breadcrumb-item"><a href="#">Home</a></li>
-          <li className="breadcrumb-item"><a href="#">Layout</a></li>
-          <li className="breadcrumb-item active">Top Navigation</li>
+          <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+          <li className="breadcrumb-item"><Link to="/product">Product</Link></li>
+          <li className="breadcrumb-item active"><Link to="/about">About</Link></li>
         </ol>
       </div>{/* /.col */}
     </div>{/* /.row */}
