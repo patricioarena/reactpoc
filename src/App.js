@@ -27,6 +27,7 @@ function App() {
         {/* Content Wrapper. Contains page content */}
         <div className="content-wrapper">
           <Header />
+          <Aside />
           <div className="content">
             <div className="container">
 

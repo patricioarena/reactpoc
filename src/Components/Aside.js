@@ -550,8 +550,15 @@ function Aside(){
             </ul>
             </nav>
             {/* /.sidebar-menu */}
+<div className="os-scrollbar os-scrollbar-vertical os-scrollbar-auto-hidden">
+    <div className="os-scrollbar-track">
+        <div className="os-scrollbar-handle" style={{height: '56.0363%', transform: 'translate(0px, 0px)'}} />
         </div>
+        </div>
+<div className="os-scrollbar-corner" />
+
         {/* /.sidebar */}
+        </div>
     </aside>
 
     )
