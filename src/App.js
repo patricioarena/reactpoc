@@ -16,7 +16,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from './Views/Home';
 import About from './Views/About'
 import Product from './Views/Product'
-
+import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
   return (
@@ -32,19 +32,14 @@ function App() {
 
               <AuthProvider>
                 <Switch>
-                  <Route exact path="/product/:id">
+                  <PrivateRoute exact path="/product/:id">
                     product with parameter
                   <Product />
-                  </Route>
-                  <Route exact path="/">
-                    <Home />
-                  </Route>
-                  <Route exact path="/product">
-                    <Product />
-                  </Route>
-                  <Route path="/about">
-                    <About />
-                  </Route>
+                  </PrivateRoute>
+                  <PrivateRoute exact path="/" component={Home} />
+                  <PrivateRoute exact path="/home" component={Home} />
+                  <PrivateRoute exact path="/product" component={Product} />
+                  <Route path="/about" component={About} />
                   <Route path="/signup" component={Signup} />
                   <Route path="/login" component={Login} />
                   <Route path="/forgot" component={Forgot} />
