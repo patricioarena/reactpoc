@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { Container, Form, Button, Card, Alert } from "react-bootstrap"
 
 const Header = () => {
     return (
@@ -15,6 +16,7 @@ const Header = () => {
           <li className="breadcrumb-item"><Link to="/clienthome">Client Home</Link></li>
           <li className="breadcrumb-item"><Link to="/product">Product</Link></li>
           <li className="breadcrumb-item active"><Link to="/about">About</Link></li>
+          <Button className="w-100" >Log Out</Button>
         </ol>
       </div>{/* /.col */}
     </div>{/* /.row */}

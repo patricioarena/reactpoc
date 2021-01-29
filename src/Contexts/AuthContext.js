@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { auth, firestore } from "../firebase"
+import { UserRole } from "../Repository/UserRole";
 
 const AuthContext = React.createContext()
 
@@ -11,14 +12,15 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState()
     const [userProfile, setUserProfile] = useState()
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState()
 
     function signup(email, password) {
         return auth.createUserWithEmailAndPassword(email, password)
             .then(function (cred) {
                 console.log("user created with credential", JSON.stringify(cred));
+                window.localStorage.setItem('email',email);
                 firestore.collection('users').doc(cred.user.uid).set({
-                    role: 1
+                    role: UserRole.Client
                 })
                     .then((dbDocument)=> {
                         console.log("Document user writen with id", dbDocument.uid);
@@ -39,6 +41,7 @@ export function AuthProvider({ children }) {
         return auth.currentUser.sendEmailVerification()
             .then(function () {
                 // Email sent && signout currentUser
+                window.localStorage.removeItem('email');
                 return auth.signOut()
                     .then(function () {
                         // Sign-out successful.

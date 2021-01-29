@@ -25,7 +25,7 @@ export default function Signup() {
         setLoading(true)
         let response = await signup(emailRef.current.value, passwordRef.current.value)
         if (response == true) {
-            let email = currentUser.email;
+            let email = window.localStorage.getItem('email');
             setSuccess(`Success to create account!\nBefore we get started, please confirm your email address.\n${email}`)
             sendEmailVerification()
         } else {
@@ -42,7 +42,7 @@ export default function Signup() {
                 <div className="w-100" style={{ maxWidth: "400px" }}>
                     <Card>
                         <Card.Body>
-                            <h2 className="text-center mb-4">Sing Up</h2>
+                            <h2 className="text-center mb-4">Sign Up</h2>
                             {error && <Alert variant="danger">{error}</Alert>}
                             {success && <Alert variant="success">{success}</Alert>}
                             <Form onSubmit={handleSubmit}>
