@@ -14,9 +14,12 @@ import { AuthProvider } from '../src/Contexts/AuthContext';
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from './Views/Home';
+import ClientHome from './Views/ClientHome';
 import About from './Views/About'
 import Product from './Views/Product'
 import PrivateRoute from "./Components/PrivateRoute";
+import ClientRoute from "./Components/ClientRoute";
+
 
 function App() {
   return (
@@ -34,13 +37,14 @@ function App() {
               <AuthProvider>
                 <Switch>
                   <PrivateRoute exact path="/product/:id">
-                    product with parameter
-                  <Product />
+                      product with parameter
+                    <Product />
                   </PrivateRoute>
-                  <PrivateRoute exact path="/" component={Home} />
-                  <PrivateRoute exact path="/home" component={Home} />
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/home" component={Home} />
+                  <ClientRoute exact path="/clienthome" component={ClientHome} />
                   <PrivateRoute exact path="/product" component={Product} />
-                  <Route path="/about" component={About} />
+                  <PrivateRoute path="/about" component={About} />
                   <Route path="/signup" component={Signup} />
                   <Route path="/login" component={Login} />
                   <Route path="/forgot" component={Forgot} />

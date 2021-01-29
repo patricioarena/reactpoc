@@ -12,6 +12,7 @@ const Header = () => {
       <div className="col-sm-6">
         <ol className="breadcrumb float-sm-right">
           <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+          <li className="breadcrumb-item"><Link to="/clienthome">Client Home</Link></li>
           <li className="breadcrumb-item"><Link to="/product">Product</Link></li>
           <li className="breadcrumb-item active"><Link to="/about">About</Link></li>
         </ol>

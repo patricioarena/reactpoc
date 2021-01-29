@@ -1,17 +1,18 @@
 import React from 'react'
 import HelloWorld from '../Components/HelloWorldHook'
 import { useAuth } from "../Contexts/AuthContext"
-function Home() {
+function ClientHome() {
     const { currentUser, userProfile } = useAuth()
     
     return(
         <div>
-            <h1>All Profile Home Page</h1>
-            <p>
+            <h1>Client Home</h1>
+            <HelloWorld name="Joaquin"/>
+            <p>fsd
             { userProfile && JSON.stringify(userProfile)}
             { currentUser && JSON.stringify(currentUser.email)}
             </p>
         </div>
     )
 }
-export default Home
+export default ClientHome

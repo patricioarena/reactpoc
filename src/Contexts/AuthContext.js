@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { auth } from "../firebase"
+import { auth, firestore } from "../firebase"
 
 const AuthContext = React.createContext()
 
@@ -9,11 +9,25 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState()
-    const [loading, setLoading] = useState()
+    const [userProfile, setUserProfile] = useState()
+
+    const [loading, setLoading] = useState(true)
 
     function signup(email, password) {
         return auth.createUserWithEmailAndPassword(email, password)
-            .then(function () {
+            .then(function (cred) {
+                console.log("user created with credential", JSON.stringify(cred));
+                firestore.collection('users').doc(cred.user.uid).set({
+                    role: 1
+                })
+                    .then((dbDocument)=> {
+                        console.log("Document user writen with id", dbDocument.uid);
+                        return true;
+                    })
+                    .catch((error)=>{
+                        console.log("Error adding document: ", error);
+                        return false;
+                    })
                 return true;
             })
             .catch(function (error) {
@@ -75,13 +89,29 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         const unsubcribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user)
-            setLoading(false)
+            // levanta el perfil del firestore
+            if (user) {
+                var docRef = firestore.collection('users').doc(user.uid);
+                docRef.get()
+                    .then(function(doc) {
+                        if (doc.exists) {
+                            console.log("Document data:", doc.data());
+                            setUserProfile(doc.data());
+                            setLoading(false)
+                        } else {
+                            console.log("No user in user collection");
+                        }
+                    }).catch(function(error) {
+                        console.log("Error getting document in user collection:", error);
+                    });
+            }
         });
         return unsubcribe;
     }, [])
 
     const value = {
         currentUser,
+        userProfile,
         login,
         signup,
         logout,

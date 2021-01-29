@@ -1,5 +1,7 @@
 import firebase from "firebase/app"
 import "firebase/auth"
+import "firebase/firestore"
+import "firebase/messaging"
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -13,4 +15,6 @@ const firebaseConfig = {
 
 const app = firebase.initializeApp(firebaseConfig)
 export const auth = app.auth()
+export const firestore = app.firestore()
+export const messaging = app.messaging();
 export default app
