@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { Container, Form, Button, Card, Alert } from "react-bootstrap"
 
+// No anda bien nada 
+
 const Header = () => {
     return (
 <div className="content-header">
