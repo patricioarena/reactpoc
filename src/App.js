@@ -13,11 +13,12 @@ import { Container } from "react-bootstrap";
 import { AuthProvider } from '../src/Contexts/AuthContext';
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Home from './Views/Home';
+import NewcomersHome from './Views/NewcomersHome';
 import ClientHome from './Views/ClientHome';
+import SellerHome from './Views/SellerHome';
 import About from './Views/About'
 import Product from './Views/Product'
-import PrivateRoute from "./Components/PrivateRoute";
+import SellerRoute from "./Components/SellerRoute";
 import ClientRoute from "./Components/ClientRoute";
 
 
@@ -25,6 +26,7 @@ function App() {
   return (
     <div>
       <Router>
+              <AuthProvider>
         <Nav />
         {/*<Aside/>*/}
         {/* Content Wrapper. Contains page content */}
@@ -34,24 +36,24 @@ function App() {
           <div className="content">
             <div className="container">
 
-              <AuthProvider>
                 <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route path="/home" component={Home} />
-                  <PrivateRoute path="/clienthome" component={ClientHome} />
-                  <PrivateRoute exact path="/product" component={Product} />
-                  <PrivateRoute path="/product/:id" component={Product} />
-                  <PrivateRoute path="/about" component={About} />
+                  <Route exact path="/" component={NewcomersHome} />
+                  <Route path="/newcomershome" component={NewcomersHome} />
+                  <ClientRoute path="/clienthome" component={ClientHome} />
+                  <SellerRoute path="/sellerhome" component={SellerHome} />
+                  <ClientRoute exact path="/product" component={Product} />
+                  <ClientRoute path="/product/:id" component={Product} />
+                  <ClientRoute path="/about" component={About} />
                   <Route path="/signup" component={Signup} />
                   <Route path="/login" component={Login} />
                   <Route path="/forgot" component={Forgot} />
                 </Switch>
-              </AuthProvider>
 
             </div>
           </div>
         </div>
         <Footer />
+              </AuthProvider>
       </Router>
     </div>
   );

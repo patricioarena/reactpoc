@@ -67,6 +67,7 @@ export function AuthProvider({ children }) {
     }
 
     function logout() {
+        setUserProfile(undefined)
         return auth.signOut()
     }
 

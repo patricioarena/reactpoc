@@ -22,7 +22,7 @@ export default function Login() {
             let response = await login(emailRef.current.value, passwordRef.current.value)
             if (response == true) {
                 setSuccess(`Success login!`)
-                history.push("/home")
+                history.push("/newcomershome")
             } else {
                 setError("Failed to log in")
             }

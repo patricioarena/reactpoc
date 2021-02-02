@@ -3,8 +3,9 @@ import { Redirect, Route } from 'react-router-dom'
 import { useAuth } from "../Contexts/AuthContext";
 import { UserRole } from '../Repository/UserRole';
 
-export default function PrivateRoute({ component: Component, ...rest }) {
+export default function SellerRoute({ component: Component, ...rest }) {
     const { currentUser, userProfile } = useAuth()
+
     if (userProfile == undefined) {
         console.log(userProfile);
         return (
@@ -20,9 +21,7 @@ export default function PrivateRoute({ component: Component, ...rest }) {
             <Route
                 {...rest}
                 render={props => {
-                    // console.log('client router ', JSON.stringify(currentUser))
-                    // console.log('client router userProfile', JSON.stringify(userProfile))
-                    return userProfile.role === UserRole.Client ? <Component {...props} /> : <Redirect to='/login' />
+                    return userProfile.role === UserRole.Seller ? <Component {...props} /> : <Redirect to='/login' />
                 }}
             ></Route>
         )

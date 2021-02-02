@@ -1,8 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { Container, Form, Button, Card, Alert } from "react-bootstrap"
-
-// No anda bien nada 
 
 const Header = () => {
     return (
@@ -10,15 +7,15 @@ const Header = () => {
   <div className="container">
     <div className="row mb-2">
       <div className="col-sm-6">
-        <h1 className="m-0"> Top Navigation <small>Example 3.0</small></h1>
+        {/* <h1 className="m-0"> Top Navigation <small>Example 3.0</small></h1> */}
       </div>{/* /.col */}
       <div className="col-sm-6">
         <ol className="breadcrumb float-sm-right">
           <li className="breadcrumb-item"><Link to="/">Home</Link></li>
           <li className="breadcrumb-item"><Link to="/clienthome">Client Home</Link></li>
+          <li className="breadcrumb-item"><Link to="/sellerhome">Seller Home</Link></li>
           <li className="breadcrumb-item"><Link to="/product">Product</Link></li>
           <li className="breadcrumb-item active"><Link to="/about">About</Link></li>
-          <Button className="w-100" >Log Out</Button>
         </ol>
       </div>{/* /.col */}
     </div>{/* /.row */}
