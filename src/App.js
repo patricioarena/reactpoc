@@ -20,21 +20,23 @@ import About from './Views/About'
 import Product from './Views/Product'
 import SellerRoute from "./Components/SellerRoute";
 import ClientRoute from "./Components/ClientRoute";
-
+import EnviromentCustom from "./Components/Enviroment";
 
 function App() {
   return (
     <div>
       <Router>
-              <AuthProvider>
-        <Nav />
-        {/*<Aside/>*/}
-        {/* Content Wrapper. Contains page content */}
-        <div className="content-wrapper">
-          <Header />
-          <Aside />
-          <div className="content">
-            <div className="container">
+        <AuthProvider>
+          <Nav />
+        <EnviromentCustom/>
+
+          {/*<Aside/>*/}
+          {/* Content Wrapper. Contains page content */}
+          <div className="content-wrapper">
+            <Header />
+            <Aside />
+            <div className="content">
+              <div className="container">
 
                 <Switch>
                   <Route exact path="/" component={NewcomersHome} />
@@ -49,11 +51,11 @@ function App() {
                   <Route path="/forgot" component={Forgot} />
                 </Switch>
 
+              </div>
             </div>
           </div>
-        </div>
-        <Footer />
-              </AuthProvider>
+          <Footer />
+        </AuthProvider>
       </Router>
     </div>
   );

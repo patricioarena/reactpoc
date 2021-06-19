@@ -1,1 +1,24 @@
+.ribbon-box {
+    position: static !important;
+}
 
+.ribbon-corner {
+    display         : flex;
+    float           : right;
+    font-size       : 12px;
+    text-transform  : uppercase;
+    font-weight     : bold;
+    color           : #ffffff;
+    letter-spacing  : 2px;
+    background-color: #1e8ee9a8;
+    padding         : 16px 10px;
+    box-shadow      : 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ribbon-text {
+    display         : flex;
+    float           : right;
+    border-top   : 25px solid #1e8ee9a8;
+    border-bottom: 25px solid #1e8ee9a8;
+    border-left  : 25px solid transparent;
+}
