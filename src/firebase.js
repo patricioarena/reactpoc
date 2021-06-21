@@ -3,6 +3,7 @@ import "firebase/auth"
 import "firebase/firestore"
 import "firebase/messaging"
 
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -14,8 +15,21 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
-const app = firebase.initializeApp(firebaseConfig)
-export const auth = app.auth()
-export const firestore = app.firestore()
-export const messaging = app.messaging();
-export default app
+firebase.initializeApp(firebaseConfig);
+
+// if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === undefined){
+//     firebase.firestore().settings({ host: 'localhost:8080', ssl: false });
+//     firebase.auth().useEmulator('http://localhost:9099/');
+// }
+
+export const providers = {
+  googleProvider : new firebase.auth.GoogleAuthProvider(),
+  facebookProvider : new firebase.auth.FacebookAuthProvider(),
+  twitterProvider : new firebase.auth.TwitterAuthProvider(),
+  githubProvider : new firebase.auth.GithubAuthProvider()
+};
+
+// export const auth = firebase.auth()
+// export const firestore = firebase.firestore()
+// export const messaging = firebase.messaging()
+// export default firebase;

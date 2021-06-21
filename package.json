@@ -21,11 +21,13 @@
   },
   "scripts": {
     "start": "set NODE_ENV=development && react-app-rewired start",
-    "build": "set NODE_ENV=production && react-app-rewired build",
+    "build:dev": "set NODE_ENV=development && react-app-rewired build",
+    "build:prod": "set NODE_ENV=production && react-app-rewired build",
+    "serve": "set NODE_ENV=production && serve -s build",
+    "deploy:cloudflare": "wrangler publish",
+    "preview:cloudflare": "wrangler preview",
     "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject",
-    "bp": "npm run build ",
-    "serve": "set NODE_ENV=production && serve -s build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

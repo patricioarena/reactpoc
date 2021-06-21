@@ -8,7 +8,7 @@ export default function Signup() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
-    const { sendEmailVerification, signup, currentUser } = useAuth()
+    const { sendEmailVerification, signup, signupGoogle, currentUser } = useAuth()
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const [loading, setLoading] = useState(false)
@@ -36,6 +36,26 @@ export default function Signup() {
         setLoading(false)
     }
 
+    async function handleGoogle(e) {
+        e.preventDefault()
+
+        setError("")
+        setSuccess("")
+        setLoading(true)
+        let response = await signupGoogle()
+        if (response == true) {
+            let email = window.localStorage.getItem('email');
+            setSuccess(`Success to create account!\nBefore we get started, please confirm your email address.\n${email}`)
+            // sendEmailVerification()
+        } else {
+            setError("Failed to create account!")
+        }
+
+        setLoading(false)
+    }
+
+
+
     return (
         <>
             <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }} >
@@ -61,6 +81,9 @@ export default function Signup() {
                                 <Button disabled={loading} className="w-100" type="submit">Sign Up</Button>
                             </Form>
                         </Card.Body>
+                    </Card>
+                    <Card>
+                        <Button className="w-100" onClick={handleGoogle} >Sign Up with Google</Button>
                     </Card>
                     <div className="d-flex align-items-center justify-content-center">
                         Already have an account? <Link to="/login">Log In</Link>

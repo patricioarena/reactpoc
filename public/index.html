@@ -16,7 +16,8 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="%PUBLIC_URL%/dist/css/adminlte.min.css" type="text/css">
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+    type="text/css">
   <!-- END ADMIN LTE 3 -->
 
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -66,16 +67,25 @@
   <script>
 
     window.addEventListener('load', function () {
-      if (window.process.NODE_ENV === "production") {
-        console.log("Running in production 🔥🔥🔥");
-        if ('serviceWorker' in navigator) {
+
+      try {
+        if (window.process.NODE_ENV === "development") {
+          console.log("Running in development 💣💣💣");
+        }
+        else if (window.process.NODE_ENV === "production") {
+          console.log("Running in production 🔥🔥🔥");
+          if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js', {
               scope: '/',
-          });
+            });
+          }
+        }else{
+          console.log("🤷‍♂️🤷‍♂️🤷‍♂️");
         }
-      }else{
-        console.log("Running in development 💣💣💣");
+      } catch (error) {
+        console.log("NODE_ENV = undefined 💣💣💣");
       }
+
     });
 
   </script>

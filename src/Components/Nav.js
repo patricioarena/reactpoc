@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react"
+import { Link } from "react-router-dom";
 import LoginControl from './LoginControl'
 
 const Nav = () => {
@@ -10,7 +11,7 @@ const Nav = () => {
           <a className="nav-link" data-widget="pushmenu" href="#" role="button"><i className="fas fa-bars" /></a>
         </li>
         <li className="nav-item d-none d-sm-inline-block">
-          <a href="/newcomershome" className="nav-link">Home</a>
+          <a className="nav-link"><Link to="/">Home</Link></a>
         </li>
         <li className="nav-item d-none d-sm-inline-block">
           <a href="#" className="nav-link">Contact</a>
