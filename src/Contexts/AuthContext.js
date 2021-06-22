@@ -33,33 +33,33 @@ export function AuthProvider({ children }) {
             });
     }
 
-    function signupGoogle() {
+    function loginGoogle(googleUser) {
+        var credential = firebase.auth.GoogleAuthProvider.credential(googleUser.getAuthResponse().id_token);
 
-
-        // Start a sign in process for an unauthenticated user.
-        var provider = new firebase.auth.GoogleAuthProvider();
-        provider.addScope('profile');
-        provider.addScope('email');
-        // firebase.auth().signInWithRedirect(provider);
-
-
-        return firebase.auth().signInWithPopup(provider)
-            .then(function (result) {
-                // console.log("user created with google", JSON.stringify(result));
-                // var credential = result.credential;
-                // var token = credential.accessToken;
-                console.log(result);
+        return firebase.auth().signInWithCredential(credential)
+            .then(function (result){
                 var user = result.user;
-                window.localStorage.setItem('email', user.email);
-                return new UserCredentials(user.uid, user.email, UserRole.Client);
-            }).then((data) => {
-                return insertIncollection('users', data).then((value) => { return value; });
+                db.collection('users').doc(user.uid)
+                .get()
+                .then(function (doc) {
+                    if (doc.exists) {
+                        console.log("Document data:", doc.data());
+                        setUserProfile(doc.data());
+                        setLoading(false)
+                        return true;
+                    } else {
+                        console.log("No user in user collection");
+                        window.localStorage.setItem('email', user.email);
+                        var newDoc = new UserCredentials(user.uid, user.email, UserRole.Client);
+                        return insertIncollection('users', newDoc).then((value) => { return value; });
+                    }
+                }).catch(function (error) {
+                    console.log("Error getting document in user collection:", error);
+                });
             })
-            .catch((error) => {
-                return false;
-            });
-
     }
+
+
 
     function sendEmailVerification() {
         return firebase.auth().currentUser.sendEmailVerification()
@@ -163,7 +163,7 @@ export function AuthProvider({ children }) {
         updateEmail,
         updatePassword,
         sendEmailVerification,
-        signupGoogle
+        loginGoogle
     }
 
     return (

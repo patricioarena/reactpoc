@@ -6,7 +6,7 @@ import Aside from './Components/Aside'
 import Nav from './Components/Nav'
 import Footer from './Components/Footer';
 
-import Signup from './Components/Signup';
+import Signup from './Components/SignUp';
 import Login from './Components/Login'
 import Forgot from './Components/Forgot'
 import { Container } from "react-bootstrap";
