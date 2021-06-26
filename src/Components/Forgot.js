@@ -19,7 +19,7 @@ export default function Forgot() {
             setSuccess("")
             setLoading(true)
             let response = await resetPassword(emailRef.current.value)
-            if (response == true) {
+            if (response === true) {
                 let email = currentUser.email;
                 setSuccess(`Success reset password!\nBefore we get started, please check your email address. ${email}`)
             } else {

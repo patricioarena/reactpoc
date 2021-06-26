@@ -1,10 +1,6 @@
 import React from 'react'
-import HelloWorld from '../Components/HelloWorldHook'
-import { Jumbotron, Container, Card } from "react-bootstrap"
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import { Jumbotron, Container } from "react-bootstrap"
 import { useAuth } from "../Contexts/AuthContext"
-import logo from '../logo.svg';
 import '../App.css';
 
 function ClientHome() {
@@ -22,7 +18,6 @@ function ClientHome() {
                 </Container>
             </Jumbotron>
             <div>
-                <HelloWorld name="Joaquin" />
                 <p>
                     {userProfile && JSON.stringify(userProfile)}
                     {currentUser && JSON.stringify(currentUser.email)}

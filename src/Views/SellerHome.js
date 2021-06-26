@@ -1,9 +1,6 @@
 import React from 'react'
-import { Jumbotron, Container, Card } from "react-bootstrap"
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import { Jumbotron, Container } from "react-bootstrap"
 import { useAuth } from "../Contexts/AuthContext"
-import logo from '../logo.svg';
 import '../App.css';
 
 function SellerHome() {

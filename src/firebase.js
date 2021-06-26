@@ -3,7 +3,6 @@ import "firebase/auth"
 import "firebase/firestore"
 import "firebase/messaging"
 
-
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -22,12 +21,12 @@ firebase.initializeApp(firebaseConfig);
 //     firebase.auth().useEmulator('http://localhost:9099/');
 // }
 
-export const providers = {
-  googleProvider : new firebase.auth.GoogleAuthProvider(),
-  facebookProvider : new firebase.auth.FacebookAuthProvider(),
-  twitterProvider : new firebase.auth.TwitterAuthProvider(),
-  githubProvider : new firebase.auth.GithubAuthProvider()
-};
+// export const providers = {
+//   googleProvider : new firebase.auth.GoogleAuthProvider(),
+//   facebookProvider : new firebase.auth.FacebookAuthProvider(),
+//   twitterProvider : new firebase.auth.TwitterAuthProvider(),
+//   githubProvider : new firebase.auth.GithubAuthProvider()
+// };
 
 // export const auth = firebase.auth()
 // export const firestore = firebase.firestore()

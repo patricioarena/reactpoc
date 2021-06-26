@@ -11,7 +11,7 @@ function Aside() {
             <div className="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden"><div className="os-resize-observer-host observed"><div className="os-resize-observer" style={{ left: 0, right: 'auto' }} /></div><div className="os-size-auto-observer observed" style={{ height: 'calc(100% + 1px)', float: 'left' }}><div className="os-resize-observer" /></div><div className="os-content-glue" style={{ margin: '0px -8px', width: 249, height: 893 }} /><div className="os-padding"><div className="os-viewport os-viewport-native-scrollbars-invisible" style={{ overflowY: 'scroll' }}><div className="os-content" style={{ padding: '0px 8px', height: '100%', width: '100%' }}>
                 <div className="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div className="image">
-                        <img src="dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
+                        <img src="dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User" />
                     </div>
                     <div className="info">
                         <a href="#" className="d-block">Alexander Pierce</a>

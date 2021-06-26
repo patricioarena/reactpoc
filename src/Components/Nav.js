@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import LoginControl from './LoginControl'
 
 const Nav = () => {
@@ -11,7 +11,7 @@ const Nav = () => {
           <a className="nav-link" data-widget="pushmenu" href="#" role="button"><i className="fas fa-bars" /></a>
         </li>
         <li className="nav-item d-none d-sm-inline-block">
-          <a className="nav-link"><Link to="/">Home</Link></a>
+          <NavLink className="nav-link" id="RouterNavLink" to="/">Home</NavLink>
         </li>
         <li className="nav-item d-none d-sm-inline-block">
           <a href="#" className="nav-link">Contact</a>

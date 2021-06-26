@@ -1,26 +1,24 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { AuthProvider } from '../src/Contexts/AuthContext';
+
 import './App.css';
-import HelloWorld from './Components/HelloWorldHook';
+
 import Header from './Components/Header';
 import Aside from './Components/Aside'
 import Nav from './Components/Nav'
 import Footer from './Components/Footer';
-
 import Signup from './Components/SignUp';
 import Login from './Components/Login'
 import Forgot from './Components/Forgot'
-import { Container } from "react-bootstrap";
-import { AuthProvider } from '../src/Contexts/AuthContext';
+import SellerRoute from "./Components/SellerRoute";
+import ClientRoute from "./Components/ClientRoute";
+import EnviromentCustom from "./Components/Enviroment";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import NewcomersHome from './Views/NewcomersHome';
 import ClientHome from './Views/ClientHome';
 import SellerHome from './Views/SellerHome';
 import About from './Views/About'
 import Product from './Views/Product'
-import SellerRoute from "./Components/SellerRoute";
-import ClientRoute from "./Components/ClientRoute";
-import EnviromentCustom from "./Components/Enviroment";
 
 function App() {
   return (

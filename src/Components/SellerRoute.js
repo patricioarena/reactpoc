@@ -1,13 +1,15 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import { useAuth } from "../Contexts/AuthContext";
+import Logger from '../Logger/Logger';
 import { UserRole } from '../Repository/UserRole';
 
 export default function SellerRoute({ component: Component, ...rest }) {
     const { currentUser, userProfile } = useAuth()
 
+    // Logger(JSON.stringify(userProfile));
+    
     if (userProfile == undefined) {
-        console.log(userProfile);
         return (
             <Route
                 {...rest}
@@ -21,7 +23,7 @@ export default function SellerRoute({ component: Component, ...rest }) {
             <Route
                 {...rest}
                 render={props => {
-                    return userProfile.role === UserRole.Seller ? <Component {...props} /> : <Redirect to='/login' />
+                    return userProfile.userRole === UserRole.Seller ? <Component {...props} /> : <Redirect to='/login' />
                 }}
             ></Route>
         )

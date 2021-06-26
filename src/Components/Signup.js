@@ -23,7 +23,7 @@ const Signup = () => {
         setSuccess("")
         setLoading(true)
         let response = await signup(emailRef.current.value, passwordRef.current.value)
-        if (response == true) {
+        if (response === true) {
             let email = window.localStorage.getItem('email');
             setSuccess(`Success to create account!\nBefore we get started, please confirm your email address.\n${email}`)
             sendEmailVerification()
