@@ -71,7 +71,7 @@ export default function Login() {
                         'longtitle': false,
                         'theme': 'dark',
                         'onsuccess': handleGoogle,
-                        'onfailure': "console.log('this.onFailure')"
+                        'onfailure': ""
                     })
                 })
             })
