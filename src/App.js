@@ -7,7 +7,7 @@ import Header from './Components/Header';
 import Aside from './Components/Aside'
 import Nav from './Components/Nav'
 import Footer from './Components/Footer';
-import Signup from './Components/SignUp';
+import SignUp from './Components/SignUp';
 import Login from './Components/Login'
 import Forgot from './Components/Forgot'
 import SellerRoute from "./Components/SellerRoute";
@@ -44,7 +44,7 @@ function App() {
                   <ClientRoute exact path="/product" component={Product} />
                   <ClientRoute path="/product/:id" component={Product} />
                   <ClientRoute path="/about" component={About} />
-                  <Route path="/signup" component={Signup} />
+                  <Route path="/signup" component={SignUp} />
                   <Route path="/login" component={Login} />
                   <Route path="/forgot" component={Forgot} />
                 </Switch>
